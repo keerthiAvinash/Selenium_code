@@ -1,0 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Step 1: Initialize the Chrome WebDriver
+driver = webdriver.Chrome()  # Make sure chromedriver is in PATH
+
+# Step 2: Open Google
+driver.get("https://www.google.com")
+
+# Step 3: Find the search box element
+search_box = driver.find_element(By.NAME, "q")
+
+# Step 4: Type a query and press ENTER
+search_box.send_keys("OpenAI GPT-5")
+search_box.send_keys(Keys.RETURN)
+
+# Step 5: Wait for results to load
+time.sleep(2)  # Simple wait; in production, use WebDriverWait
+
+# Step 6: Grab the first result link
+first_result = driver.find_element(By.CSS_SELECTOR, "h3")
+print("First result title:", first_result.text)
+
+# Step 7: Close the browser
+driver.quit()
