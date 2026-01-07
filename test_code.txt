@@ -1,0 +1,81 @@
+abstract class BankAccount {
+    private String accountHolder;
+    private double balance;
+
+    public BankAccount(String accountHolder, double balance) {
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    protected void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public abstract void accountType();
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + " | New Balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount + " | New Balance: " + balance);
+        } else {
+            System.out.println("Insufficient funds!");
+        }
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    public SavingsAccount(String accountHolder, double balance) {
+        super(accountHolder, balance);
+    }
+
+    @Override
+    public void accountType() {
+        System.out.println("This is a Savings Account.");
+    }
+}
+
+class CurrentAccount extends BankAccount {
+    public CurrentAccount(String accountHolder, double balance) {
+        super(accountHolder, balance);
+    }
+
+    @Override
+    public void accountType() {
+        System.out.println("This is a Current Account.");
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        System.out.println("Overdraft allowed in Current Account.");
+        setBalance(getBalance() - amount);
+        System.out.println("Withdrawn: " + amount + " | New Balance: " + getBalance());
+    }
+}
+
+public class BankDemo {
+    public static void main(String[] args) {
+        BankAccount savings = new SavingsAccount("Alice", 1000);
+        BankAccount current = new CurrentAccount("Bob", 2000);
+
+        savings.accountType();
+        savings.deposit(500);
+        savings.withdraw(200);
+
+        current.accountType();
+        current.deposit(1000);
+        current.withdraw(3500);
+    }
+}
