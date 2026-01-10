@@ -1,0 +1,24 @@
+{
+  "file_content": [
+    "from selenium import webdriver",
+    "from selenium.webdriver.common.by import By",
+    "from selenium.webdriver.common.keys import Keys",
+    "import time",
+    "",
+    "# Step 1: Initialize the Chrome WebDriver",
+    "driver = webdriver.Chrome()",
+    "",
+    "driver.get(\"https://www.google.com\")",
+    "",
+    "search_box = driver.find_element(By.NAME, \"q\")",
+    "search_box.send_keys(\"OpenAI GPT-5\")",
+    "search_box.send_keys(Keys.RETURN)",
+    "",
+    "time.sleep(2)",
+    "",
+    "first_result = driver.find_element(By.CSS_SELECTOR, \"h3\")",
+    "print(\"First result title:\", first_result.text)",
+    "",
+    "driver.quit()"
+  ]
+}
