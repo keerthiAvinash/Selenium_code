@@ -1,0 +1,37 @@
+TestCaseID: TC_GOOGLE_SEARCH_01
+Title: Launch browser and navigate to Google homepage
+PreConditions: Selenium WebDriver is installed and configured. Internet connection is available.
+TestSteps: 1. Launch the browser using Selenium WebDriver.
+2. Navigate to 'https://www.google.com'.
+ExpectedResults: Google homepage loads successfully and the search bar is visible.
+ActualResults: Google homepage loaded and search bar is visible.
+Status: Pass
+
+TestCaseID: TC_GOOGLE_SEARCH_02
+Title: Enter search query and verify suggestions
+PreConditions: Google homepage is loaded and search bar is visible.
+TestSteps: 1. Click on the search bar.
+2. Enter the query 'Selenium testing' slowly (character by character).
+3. Observe the suggestions dropdown below the search bar.
+ExpectedResults: Search suggestions appear dynamically as each character is typed.
+ActualResults: Search suggestions appeared as expected while typing.
+Status: Pass
+
+TestCaseID: TC_GOOGLE_SEARCH_03
+Title: Submit search and validate results
+PreConditions: Search query 'Selenium testing' is entered in the search bar.
+TestSteps: 1. Press 'Enter' or click the 'Google Search' button.
+2. Wait for the search results page to load.
+ExpectedResults: Search results page loads and displays relevant results for 'Selenium testing'.
+ActualResults: Results page loaded and displayed relevant results for 'Selenium testing'.
+Status: Pass
+
+TestCaseID: TC_GOOGLE_SEARCH_04
+Title: Validate page update after search
+PreConditions: Search results page for 'Selenium testing' is loaded.
+TestSteps: 1. Verify that the URL has changed to include the search query.
+2. Check that the page title includes the search query.
+3. Ensure that the search results are relevant to the query.
+ExpectedResults: URL and page title reflect the search query. Results are relevant.
+ActualResults: URL and page title included the query. Results were relevant.
+Status: Pass
